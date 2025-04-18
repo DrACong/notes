@@ -113,6 +113,7 @@ QLineEdit#searchEdit QToolButton,
 QPushButton#newNoteButton,
 /* The 3 dots button */
 QPushButton#dotsButton,
+QPushButton#mdpreviewButton,
 /* The global settings button */
 QPushButton#globalSettingsButton,
 /* The button to toggle the tree view */
@@ -155,6 +156,7 @@ QMenu::item:selected {
 
 QPushButton#globalSettingsButton,
 QPushButton#dotsButton,
+QPushButton#mdpreviewButton,
 QPushButton#toggleTreeViewButton,
 QPushButton#newNoteButton,
 QPushButton#switchToKanbanViewButton {
@@ -163,6 +165,7 @@ QPushButton#switchToKanbanViewButton {
 
 QPushButton#globalSettingsButton:hover,
 QPushButton#dotsButton:hover,
+QPushButton#mdpreviewButton:hover,
 QPushButton#toggleTreeViewButton:hover,
 QPushButton#newNoteButton:hover,
 QPushButton#switchToKanbanViewButton:hover {
@@ -171,6 +174,7 @@ QPushButton#switchToKanbanViewButton:hover {
 
 QPushButton#globalSettingsButton:pressed,
 QPushButton#dotsButton:pressed,
+QPushButton#mdpreviewButton:pressed,
 QPushButton#toggleTreeViewButton:pressed,
 QPushButton#newNoteButton:pressed,
 QPushButton#switchToKanbanViewButton:pressed {

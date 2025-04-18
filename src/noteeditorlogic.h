@@ -15,6 +15,7 @@
 
 #include "nodedata.h"
 #include "editorsettingsoptions.h"
+#include "markdownpreviewwindow.h"
 
 class CustomDocument;
 class CustomMarkdownHighlighter;
@@ -38,7 +39,9 @@ public:
     explicit NoteEditorLogic(CustomDocument *textEdit, QLabel *editorDateLabel, QLineEdit *searchEdit, TagListView *tagListView, TagPool *tagPool,
                              DBManager *dbManager, QObject *parent = nullptr);
 #endif
-
+    void toggleMarkdownPreview();
+    void updatePreviewState(bool visible);
+    bool isMarkdownPreviewVisible() const;
     bool markdownEnabled() const;
     void setMarkdownEnabled(bool enabled);
     static QString getNoteDateEditor(const QString &dateEdited);
@@ -89,6 +92,7 @@ signals:
     void hideKanbanView();
     void textShown();
     void kanbanShown();
+    void showMarkdownPreview(bool enabled);
 #if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
     void tasksFoundInEditor(QVariant data);
     void clearKanbanModel();
@@ -125,6 +129,8 @@ private:
     QColor m_spacerColor;
     int m_currentAdaptableEditorPadding;
     int m_currentMinimumEditorPadding;
+    MarkdownPreviewWindow *m_previewWindow;
+    bool m_isPreviewVisible;
 };
 
 #endif // NOTEEDITORLOGIC_H

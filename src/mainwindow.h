@@ -144,6 +144,7 @@ private:
     QHBoxLayout m_trafficLightLayout;
     QPushButton *m_newNoteButton;
     QPushButton *m_dotsButton;
+    QPushButton *m_mdpreviewButton;
     QPushButton *m_globalSettingsButton;
     QPushButton *m_toggleTreeViewButton;
     QPushButton *m_switchToTextViewButton;
@@ -355,6 +356,7 @@ private slots:
     void updateFrame();
     bool isTitleBar(int x, int y) const;
     void openSubscriptionWindow();
+    void toggleMarkdownPreview();
 
 signals:
     void requestNodesTree();

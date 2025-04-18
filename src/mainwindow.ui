@@ -50,7 +50,7 @@ NoteData #dateLabel{
    <bool>false</bool>
   </property>
   <property name="tabShape">
-   <enum>QTabWidget::Rounded</enum>
+   <enum>QTabWidget::TabShape::Rounded</enum>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="sizePolicy">
@@ -78,10 +78,10 @@ NoteData #dateLabel{
     <item row="0" column="0">
      <widget class="QFrame" name="frame">
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Shape::NoFrame</enum>
       </property>
       <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
+       <enum>QFrame::Shadow::Raised</enum>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <property name="spacing">
@@ -102,7 +102,7 @@ NoteData #dateLabel{
        <item>
         <widget class="QSplitter" name="splitter">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
          <property name="handleWidth">
           <number>0</number>
@@ -141,10 +141,10 @@ NoteData #dateLabel{
              <item>
               <spacer name="verticalSpacer_aboveTitleBarButtons">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeType">
-                <enum>QSizePolicy::Minimum</enum>
+                <enum>QSizePolicy::Policy::Minimum</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -162,7 +162,7 @@ NoteData #dateLabel{
                <item>
                 <spacer name="horizontalSpacer">
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
@@ -203,10 +203,10 @@ NoteData #dateLabel{
                <item>
                 <spacer name="horizontalSpacer_2">
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                  <property name="sizeType">
-                  <enum>QSizePolicy::Minimum</enum>
+                  <enum>QSizePolicy::Policy::Minimum</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
@@ -221,10 +221,10 @@ NoteData #dateLabel{
              <item>
               <spacer name="verticalSpacer_aoveTreeView">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeType">
-                <enum>QSizePolicy::Minimum</enum>
+                <enum>QSizePolicy::Policy::Minimum</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -266,7 +266,7 @@ NoteData #dateLabel{
               </size>
              </property>
              <property name="orientation">
-              <enum>Qt::Vertical</enum>
+              <enum>Qt::Orientation::Vertical</enum>
              </property>
             </widget>
            </item>
@@ -301,7 +301,7 @@ NoteData #dateLabel{
               <number>0</number>
              </property>
              <property name="sizeConstraint">
-              <enum>QLayout::SetNoConstraint</enum>
+              <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
              </property>
              <item>
               <widget class="QWidget" name="verticalSpacer_upSearchEdit2" native="true">
@@ -362,10 +362,10 @@ NoteData #dateLabel{
                   <item>
                    <spacer name="horizontalSpacer_6">
                     <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
+                     <enum>Qt::Orientation::Horizontal</enum>
                     </property>
                     <property name="sizeType">
-                     <enum>QSizePolicy::Minimum</enum>
+                     <enum>QSizePolicy::Policy::Minimum</enum>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
@@ -406,10 +406,10 @@ NoteData #dateLabel{
                   <item>
                    <spacer name="horizontalSpacer_3">
                     <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
+                     <enum>Qt::Orientation::Horizontal</enum>
                     </property>
                     <property name="sizeType">
-                     <enum>QSizePolicy::Minimum</enum>
+                     <enum>QSizePolicy::Policy::Minimum</enum>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
@@ -431,17 +431,17 @@ NoteData #dateLabel{
                      <string>TextLabel</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignCenter</set>
+                     <set>Qt::AlignmentFlag::AlignCenter</set>
                     </property>
                    </widget>
                   </item>
                   <item>
                    <spacer name="horizontalSpacer_5">
                     <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
+                     <enum>Qt::Orientation::Horizontal</enum>
                     </property>
                     <property name="sizeType">
-                     <enum>QSizePolicy::Minimum</enum>
+                     <enum>QSizePolicy::Policy::Minimum</enum>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
@@ -457,17 +457,17 @@ NoteData #dateLabel{
                      <string>TextLabel</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                    </widget>
                   </item>
                   <item>
                    <spacer name="horizontalSpacer_4">
                     <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
+                     <enum>Qt::Orientation::Horizontal</enum>
                     </property>
                     <property name="sizeType">
-                     <enum>QSizePolicy::Minimum</enum>
+                     <enum>QSizePolicy::Policy::Minimum</enum>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
@@ -482,10 +482,10 @@ NoteData #dateLabel{
                 <item>
                  <spacer name="verticalSpacer">
                   <property name="orientation">
-                   <enum>Qt::Vertical</enum>
+                   <enum>Qt::Orientation::Vertical</enum>
                   </property>
                   <property name="sizeType">
-                   <enum>QSizePolicy::Minimum</enum>
+                   <enum>QSizePolicy::Policy::Minimum</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -509,10 +509,10 @@ NoteData #dateLabel{
                   <item>
                    <spacer name="horizontalSpacer_leftSearchEdit">
                     <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
+                     <enum>Qt::Orientation::Horizontal</enum>
                     </property>
                     <property name="sizeType">
-                     <enum>QSizePolicy::Minimum</enum>
+                     <enum>QSizePolicy::Policy::Minimum</enum>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
@@ -549,7 +549,7 @@ NoteData #dateLabel{
                      </font>
                     </property>
                     <property name="focusPolicy">
-                     <enum>Qt::StrongFocus</enum>
+                     <enum>Qt::FocusPolicy::StrongFocus</enum>
                     </property>
                     <property name="autoFillBackground">
                      <bool>false</bool>
@@ -570,7 +570,7 @@ NoteData #dateLabel{
                      <string>Search</string>
                     </property>
                     <property name="cursorMoveStyle">
-                     <enum>Qt::LogicalMoveStyle</enum>
+                     <enum>Qt::CursorMoveStyle::LogicalMoveStyle</enum>
                     </property>
                     <property name="clearButtonEnabled">
                      <bool>false</bool>
@@ -580,10 +580,10 @@ NoteData #dateLabel{
                   <item>
                    <spacer name="horizontalSpacer_rightSearchEdit">
                     <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
+                     <enum>Qt::Orientation::Horizontal</enum>
                     </property>
                     <property name="sizeType">
-                     <enum>QSizePolicy::Minimum</enum>
+                     <enum>QSizePolicy::Policy::Minimum</enum>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
@@ -611,7 +611,7 @@ NoteData #dateLabel{
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
                     <property name="focusPolicy">
-                     <enum>Qt::TabFocus</enum>
+                     <enum>Qt::FocusPolicy::TabFocus</enum>
                     </property>
                     <property name="text">
                      <string/>
@@ -627,10 +627,10 @@ NoteData #dateLabel{
                   <item>
                    <spacer name="horizontalSpacer_7">
                     <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
+                     <enum>Qt::Orientation::Horizontal</enum>
                     </property>
                     <property name="sizeType">
-                     <enum>QSizePolicy::Minimum</enum>
+                     <enum>QSizePolicy::Policy::Minimum</enum>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
@@ -645,10 +645,10 @@ NoteData #dateLabel{
                 <item>
                  <spacer name="verticalSpacer_upScrollArea">
                   <property name="orientation">
-                   <enum>Qt::Vertical</enum>
+                   <enum>Qt::Orientation::Vertical</enum>
                   </property>
                   <property name="sizeType">
-                   <enum>QSizePolicy::Minimum</enum>
+                   <enum>QSizePolicy::Policy::Minimum</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -682,25 +682,25 @@ NoteData #dateLabel{
                 </size>
                </property>
                <property name="frameShape">
-                <enum>QFrame::NoFrame</enum>
+                <enum>QFrame::Shape::NoFrame</enum>
                </property>
                <property name="lineWidth">
                 <number>0</number>
                </property>
                <property name="verticalScrollBarPolicy">
-                <enum>Qt::ScrollBarAsNeeded</enum>
+                <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
                </property>
                <property name="horizontalScrollBarPolicy">
-                <enum>Qt::ScrollBarAlwaysOff</enum>
+                <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
                </property>
                <property name="editTriggers">
-                <set>QAbstractItemView::NoEditTriggers</set>
+                <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
                </property>
                <property name="showDropIndicator" stdset="0">
                 <bool>false</bool>
                </property>
                <property name="selectionBehavior">
-                <enum>QAbstractItemView::SelectRows</enum>
+                <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
                </property>
               </widget>
              </item>
@@ -733,7 +733,7 @@ NoteData #dateLabel{
               </size>
              </property>
              <property name="orientation">
-              <enum>Qt::Vertical</enum>
+              <enum>Qt::Orientation::Vertical</enum>
              </property>
             </widget>
            </item>
@@ -771,10 +771,10 @@ NoteData #dateLabel{
               </size>
              </property>
              <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
+              <enum>QFrame::Shape::StyledPanel</enum>
              </property>
              <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
+              <enum>QFrame::Shadow::Raised</enum>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout">
               <property name="spacing">
@@ -795,10 +795,10 @@ NoteData #dateLabel{
               <item>
                <spacer name="verticalSpacer_upEditorDateLabel">
                 <property name="orientation">
-                 <enum>Qt::Vertical</enum>
+                 <enum>Qt::Orientation::Vertical</enum>
                 </property>
                 <property name="sizeType">
-                 <enum>QSizePolicy::Minimum</enum>
+                 <enum>QSizePolicy::Policy::Minimum</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -816,10 +816,10 @@ NoteData #dateLabel{
                 <item>
                  <spacer name="horizontalSpacer_leftDateLabel_1">
                   <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
+                   <enum>Qt::Orientation::Horizontal</enum>
                   </property>
                   <property name="sizeType">
-                   <enum>QSizePolicy::Minimum</enum>
+                   <enum>QSizePolicy::Policy::Minimum</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -857,10 +857,10 @@ NoteData #dateLabel{
                 <item>
                  <spacer name="horizontalSpacer_8">
                   <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
+                   <enum>Qt::Orientation::Horizontal</enum>
                   </property>
                   <property name="sizeType">
-                   <enum>QSizePolicy::Minimum</enum>
+                   <enum>QSizePolicy::Policy::Minimum</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -895,7 +895,7 @@ NoteData #dateLabel{
                 <item>
                  <spacer name="horizontalSpacer_leftDateLabel_2">
                   <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
+                   <enum>Qt::Orientation::Horizontal</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -939,11 +939,49 @@ color: rgb(132, 132, 132);
                 <item>
                  <spacer name="horizontalSpacer_leftDotsButton">
                   <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
+                   <enum>Qt::Orientation::Horizontal</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
                     <width>40</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="mdpreviewButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>30</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>30</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_rightmdButton">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Policy::Minimum</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>15</width>
                     <height>25</height>
                    </size>
                   </property>
@@ -967,7 +1005,7 @@ color: rgb(132, 132, 132);
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="focusPolicy">
-                   <enum>Qt::NoFocus</enum>
+                   <enum>Qt::FocusPolicy::NoFocus</enum>
                   </property>
                   <property name="text">
                    <string/>
@@ -977,10 +1015,10 @@ color: rgb(132, 132, 132);
                 <item>
                  <spacer name="horizontalSpacer_rightDotsButton">
                   <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
+                   <enum>Qt::Orientation::Horizontal</enum>
                   </property>
                   <property name="sizeType">
-                   <enum>QSizePolicy::Minimum</enum>
+                   <enum>QSizePolicy::Policy::Minimum</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -998,10 +1036,10 @@ color: rgb(132, 132, 132);
            <item>
             <spacer name="verticalSpacer_upTextEdit">
              <property name="orientation">
-              <enum>Qt::Vertical</enum>
+              <enum>Qt::Orientation::Vertical</enum>
              </property>
              <property name="sizeType">
-              <enum>QSizePolicy::Minimum</enum>
+              <enum>QSizePolicy::Policy::Minimum</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -1033,7 +1071,7 @@ color: rgb(132, 132, 132);
               </font>
              </property>
              <property name="focusPolicy">
-              <enum>Qt::StrongFocus</enum>
+              <enum>Qt::FocusPolicy::StrongFocus</enum>
              </property>
              <property name="acceptDrops">
               <bool>true</bool>
@@ -1042,10 +1080,10 @@ color: rgb(132, 132, 132);
               <string notr="true"/>
              </property>
              <property name="frameShape">
-              <enum>QFrame::NoFrame</enum>
+              <enum>QFrame::Shape::NoFrame</enum>
              </property>
              <property name="horizontalScrollBarPolicy">
-              <enum>Qt::ScrollBarAlwaysOff</enum>
+              <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
              </property>
              <property name="tabChangesFocus">
               <bool>false</bool>
@@ -1066,8 +1104,8 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'.AppleSystemUIFont';&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="placeholderText">
               <string/>

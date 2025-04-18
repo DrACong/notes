@@ -12,6 +12,7 @@
 #include <QListWidget>
 #include <QDebug>
 #include <QCursor>
+#include <qlogging.h>
 
 namespace {
 auto constexpr FIRST_LINE_MAX = 80;
@@ -38,7 +39,9 @@ NoteEditorLogic::NoteEditorLogic(CustomDocument *textEdit, QLabel *editorDateLab
       m_isContentModified{ false },
       m_spacerColor{ 191, 191, 191 },
       m_currentAdaptableEditorPadding{ 0 },
-      m_currentMinimumEditorPadding{ 0 }
+      m_currentMinimumEditorPadding{ 0 },
+      m_previewWindow(nullptr),
+      m_isPreviewVisible(false)
 {
     connect(m_textEdit, &QTextEdit::textChanged, this, &NoteEditorLogic::onTextEditTextChanged);
     connect(this, &NoteEditorLogic::requestCreateUpdateNote, m_dbManager, &DBManager::onCreateUpdateRequestedNoteContent, Qt::QueuedConnection);
@@ -86,6 +89,49 @@ NoteEditorLogic::NoteEditorLogic(CustomDocument *textEdit, QLabel *editorDateLab
 #endif
 }
 
+void NoteEditorLogic::updatePreviewState(bool visible) {
+    if (m_isPreviewVisible == visible) {
+        return;
+    }
+    m_isPreviewVisible = visible;
+    emit showMarkdownPreview(visible);
+}
+
+void NoteEditorLogic::toggleMarkdownPreview()
+{
+    if (!m_isPreviewVisible) {
+        if (m_previewWindow == nullptr) {
+            m_previewWindow = new MarkdownPreviewWindow();
+            connect(m_previewWindow, &MarkdownPreviewWindow::windowClosedorMinimized, this, [this]() {
+                updatePreviewState(false);
+            });
+            
+            connect(m_previewWindow, &MarkdownPreviewWindow::windowRestored, this, [this]() {
+                updatePreviewState(true);
+            });
+            connect(m_previewWindow, &QObject::destroyed, this, [this]() {
+                m_previewWindow = nullptr;
+                updatePreviewState(false);
+            });
+        }
+        m_previewWindow->show();
+        m_previewWindow->setMarkdownText(m_textEdit->toPlainText());
+        m_previewWindow->activateWindow();
+        updatePreviewState(true);
+    } else {
+        if (m_previewWindow != nullptr) {
+            m_previewWindow->close();
+        }
+        updatePreviewState(false);
+    }
+    
+}
+
+bool NoteEditorLogic::isMarkdownPreviewVisible() const
+{
+    return m_isPreviewVisible;
+}
+
 bool NoteEditorLogic::markdownEnabled() const
 {
     return m_highlighter->document() != nullptr;
@@ -94,6 +140,9 @@ bool NoteEditorLogic::markdownEnabled() const
 void NoteEditorLogic::setMarkdownEnabled(bool enabled)
 {
     m_highlighter->setDocument(enabled ? m_textEdit->document() : nullptr);
+    if (!enabled && m_isPreviewVisible) {
+        toggleMarkdownPreview();
+    }
 }
 
 void NoteEditorLogic::showNotesInEditor(const QVector<NodeData> &notes)
@@ -220,6 +269,9 @@ void NoteEditorLogic::onTextEditTextChanged()
             m_isContentModified = true;
             m_autoSaveTimer.start();
             emit setVisibilityOfFrameRightWidgets(false);
+        }
+        if (m_isPreviewVisible && m_previewWindow != nullptr) {
+            m_previewWindow->setMarkdownText(m_textEdit->toPlainText());
         }
         m_textEdit->blockSignals(false);
     } else {
@@ -822,6 +874,9 @@ void NoteEditorLogic::setTheme(Theme::Value theme, QColor textColor, qreal fontS
         int verticalScrollBarValueToRestore = m_textEdit->verticalScrollBar()->value();
         showNotesInEditor(m_currentNotes);
         m_textEdit->verticalScrollBar()->setValue(verticalScrollBarValueToRestore);
+    }
+    if (m_previewWindow != nullptr) {
+        m_previewWindow->setTheme(theme);
     }
 }
 

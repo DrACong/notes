@@ -5,6 +5,7 @@ build-Notes-*
 build-*
 bin*
 CMakeLists.txt.user
+*.bat
 
 # OS generated files #
 ######################

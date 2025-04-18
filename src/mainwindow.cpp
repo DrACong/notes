@@ -48,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent)
       m_trafficLightLayout(nullptr),
       m_newNoteButton(nullptr),
       m_dotsButton(nullptr),
+      m_mdpreviewButton(nullptr),
       m_globalSettingsButton(nullptr),
       m_textEdit(nullptr),
       m_noteEditorLogic(nullptr),
@@ -178,8 +179,8 @@ void MainWindow::initData()
     QString oldNoteDBPath = QStringLiteral("%1/Notes.ini").arg(dir.path());
     QString oldTrashDBPath = QStringLiteral("%1/Trash.ini").arg(dir.path());
 
-    bool isV0_9_0 = (QFile::exists(oldNoteDBPath) || QFile::exists(oldTrashDBPath));
-    if (isV0_9_0) {
+    bool isV090 = (QFile::exists(oldNoteDBPath) || QFile::exists(oldTrashDBPath));
+    if (isV090) {
         auto *pd = new QProgressDialog(tr("Migrating database, please wait."), QString(), 0, 0, this);
         pd->setCancelButton(nullptr);
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
@@ -389,6 +390,7 @@ void MainWindow::setupMainWindow()
     m_ui->toggleTreeViewButton->setStyleSheet(m_styleSheet);
     m_ui->newNoteButton->setStyleSheet(m_styleSheet);
     m_ui->dotsButton->setStyleSheet(m_styleSheet);
+    m_ui->mdpreviewButton->setStyleSheet(m_styleSheet);
     m_ui->globalSettingsButton->setStyleSheet(m_styleSheet);
     m_ui->switchToTextViewButton->setStyleSheet(m_styleSheet);
     m_ui->switchToKanbanViewButton->setStyleSheet(m_styleSheet);
@@ -434,6 +436,7 @@ void MainWindow::setupMainWindow()
 
     m_newNoteButton = m_ui->newNoteButton;
     m_dotsButton = m_ui->dotsButton;
+    m_mdpreviewButton = m_ui->mdpreviewButton;
     m_globalSettingsButton = m_ui->globalSettingsButton;
     m_searchEdit = m_ui->searchEdit;
     m_textEdit = m_ui->textEdit;
@@ -463,6 +466,7 @@ void MainWindow::setupMainWindow()
 
     m_newNoteButton->setToolTip(tr("Create New Note"));
     m_dotsButton->setToolTip(tr("Open Editor Settings"));
+    m_mdpreviewButton->setToolTip(tr("Open Markdown Preview win"));
     m_globalSettingsButton->setToolTip(tr("Open App Settings"));
     m_toggleTreeViewButton->setToolTip("Toggle Folders Pane");
     m_switchToTextViewButton->setToolTip("Switch To Text View");
@@ -694,6 +698,8 @@ void MainWindow::setupButtons()
     m_dotsButton->setFont(materialSymbols);
     m_dotsButton->setText(u8"\ue5d3"); // ellipsis_h
 
+
+
 #if defined(Q_OS_MACOS)
     materialSymbols.setPointSize(24 + pointSizeOffset);
 #else
@@ -703,6 +709,9 @@ void MainWindow::setupButtons()
     m_switchToKanbanViewButton->setText(u8"\ueb7f"); // view_kanban
     m_switchToTextViewButton->setFont(materialSymbols);
     m_switchToTextViewButton->setText(u8"\uef42"); // article
+
+    m_mdpreviewButton->setFont(materialSymbols);
+    m_mdpreviewButton->setText(u8"\u26F6"); // fullscreen
 
     materialSymbols.setPointSize(20 + pointSizeOffset);
     m_toggleTreeViewButton->setFont(materialSymbols);
@@ -809,6 +818,11 @@ void MainWindow::setupSignalsSlots()
 
         m_ui->frameRightTop->hide();
     });
+    //markdown preview window signal
+    connect(m_noteEditorLogic, &NoteEditorLogic::showMarkdownPreview, this, [this](bool enabled) {
+        m_mdpreviewButton->setText(enabled ? u8"\u2715" : u8"\u26F6"); 
+        m_mdpreviewButton->setToolTip(enabled ? tr("Close Markdown Preview win") : tr("Open Markdown Preview win"));
+    });
     connect(m_noteEditorLogic, &NoteEditorLogic::hideKanbanView, this, [this]() {
         //        if (m_isEditorSettingsFromQuickViewVisible) {
         //            showEditorSettings();
@@ -824,6 +838,7 @@ void MainWindow::setupSignalsSlots()
         m_splitter->setHandleWidth(0);
     });
     connect(m_toggleTreeViewButton, &QPushButton::clicked, this, &MainWindow::toggleFolderTree);
+    connect(m_mdpreviewButton, &QPushButton::clicked, this, &MainWindow::toggleMarkdownPreview);
     connect(m_dbManager, &DBManager::showErrorMessage, this, &MainWindow::showErrorMessage, Qt::QueuedConnection);
     connect(m_listViewLogic, &ListViewLogic::requestNewNote, this, &MainWindow::onNewNoteButtonClicked);
     connect(m_listViewLogic, &ListViewLogic::moveNoteRequested, this, [this](int id, int target) {
@@ -1809,6 +1824,7 @@ void MainWindow::setButtonsAndFieldsEnabled(bool doEnable)
     m_textEdit->setEnabled(doEnable);
     m_dotsButton->setEnabled(doEnable);
     m_globalSettingsButton->setEnabled(doEnable);
+    m_mdpreviewButton->setEnabled(doEnable);
 }
 
 /*!
@@ -1966,6 +1982,10 @@ void MainWindow::onDotsButtonClicked()
 void MainWindow::onSwitchToKanbanViewButtonClicked()
 {
     setKanbanVisibility(true);
+    //close markdown preview windows
+    if (m_noteEditorLogic->isMarkdownPreviewVisible()) {
+        toggleMarkdownPreview();
+    }
 }
 
 /*!
@@ -2099,6 +2119,15 @@ void MainWindow::setupGlobalSettingsMenu()
 #endif
 }
 
+void MainWindow::toggleMarkdownPreview()
+{
+    if (m_noteEditorLogic->markdownEnabled()) {
+        m_noteEditorLogic->toggleMarkdownPreview();
+    } else {
+        QMessageBox::information(this, tr("Markdown Disabled"), 
+                                tr("Please enable Markdown first to use the preview feature."));
+    }
+}
 /*!
  * \brief MainWindow::onGlobalSettingsButtonClicked
  * Open up the menu when clicking the global settings button
@@ -3560,6 +3589,7 @@ void MainWindow::setVisibilityOfFrameRightWidgets(bool isVisible)
 
     m_editorDateLabel->setVisible(isVisible);
     m_dotsButton->setVisible(isVisible);
+    m_mdpreviewButton->setVisible(isVisible);
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
     m_switchToTextViewButton->setVisible(isVisible);

@@ -1,0 +1,59 @@
+/* markdown-light.css */
+QTextBrowser {
+    background-color: #ffffff;
+    color: #333333;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    padding: 10px;
+}
+
+QTextBrowser a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+QTextBrowser a:hover {
+    text-decoration: underline;
+}
+
+QTextBrowser h1, QTextBrowser h2, QTextBrowser h3, QTextBrowser h4, QTextBrowser h5, QTextBrowser h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+QTextBrowser h1 {
+    font-size: 2em;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 0.3em;
+}
+
+QTextBrowser h2 {
+    font-size: 1.5em;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 0.3em;
+}
+
+QTextBrowser code {
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    background-color: rgba(27, 31, 35, 0.05);
+    border-radius: 3px;
+    padding: 0.2em 0.4em;
+    font-size: 85%;
+}
+
+QTextBrowser pre {
+    background-color: #f6f8fa;
+    border-radius: 3px;
+    padding: 16px;
+    overflow: auto;
+    line-height: 1.45;
+}
+
+QTextBrowser blockquote {
+    border-left: 4px solid #dfe2e5;
+    color: #6a737d;
+    padding: 0 1em;
+    margin-left: 0;
+}
