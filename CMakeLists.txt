@@ -18,6 +18,7 @@ option(UPDATE_CHECKER
        "Enable or disable both the update checker and auto-updater" ON)
 option(PRO_VERSION "Enable or disable Notes Pro features" ON)
 option(ENABLE_ASAN "Enable address sanitizer" OFF)
+option(ENABLE_TRANSLATIONS "Enable application translations" ON)
 
 project(
   Notes
@@ -190,6 +191,12 @@ set(SOURCES
     ${PROJECT_SOURCE_DIR}/src/fonts.qrc
     ${PROJECT_SOURCE_DIR}/src/images.qrc
     ${PROJECT_SOURCE_DIR}/src/styles.qrc)
+if(ENABLE_TRANSLATIONS)
+    list(APPEND SOURCES
+        ${PROJECT_SOURCE_DIR}/src/translations.qrc
+    )
+    add_definitions(-DENABLE_TRANSLATIONS)
+endif()
 
 # Third-party source files.
 set(SOURCES_3RD_PARTY

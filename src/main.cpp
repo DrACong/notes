@@ -12,6 +12,25 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+
+#ifdef ENABLE_TRANSLATIONS
+    qDebug() << "Attempting to load translations...";
+    
+    // 1. 加载应用程序翻译
+    QTranslator appTranslator;
+    QString appTransFile = ":/translations/notes_zh.qm";
+    
+    if(QFile::exists(appTransFile)) {
+        if(appTranslator.load(appTransFile)) {
+            QApplication::installTranslator(&appTranslator);
+            qDebug() << "Successfully loaded application translation:" << appTransFile;
+        } else {
+            qDebug() << "Failed to load application translation:" << appTransFile;
+        }
+    } else {
+        qDebug() << "Application translation file not found:" << appTransFile;
+    }
+#endif
     // Set application information
     QApplication::setApplicationName("Notes");
     QApplication::setApplicationVersion(APP_VERSION);
